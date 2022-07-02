@@ -24,12 +24,12 @@ useEffect(()=>{
     <div><ResortNav/>
      <div className="slider-area ">
            
-           <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/contact_hero.jpg" + ")"}} >
+           <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/h1_hero.jpg" + ")"}} >
                <div className="container">
                    <div className="row">
                        <div className="col-xl-12">
                            <div className="hero-cap text-center">
-                               <h2>Request For Resort </h2>
+                               <h2 >Request For Resort </h2>
                                
                            </div>
                        </div>
@@ -41,6 +41,7 @@ useEffect(()=>{
                 <div className="container">
                    
                     <div className="row">
+                    {item.length>0?<>
                         {item
                         .map((u)=>(
                             <div className="col-xl-4 col-lg-4 col-md-6">
@@ -66,7 +67,9 @@ useEffect(()=>{
                                 </div>
                             </div>
                         </div>
-                        ))}
+                        ))}</>:<div style={{width:"600px", margin:"auto"}}><div style={{textAlign:"center",fontSize:20}}  className="alert alert-warning" role="alert">
+                        Request Not Found!
+                       </div></div>}
                         
                        
                        

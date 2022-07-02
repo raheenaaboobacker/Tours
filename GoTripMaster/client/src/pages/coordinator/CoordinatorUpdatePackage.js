@@ -93,7 +93,7 @@ axios.get(`http://localhost:5000/cordinator/findupdatedata/${id}`).then(response
               <input type="file" name="image" onChange={(e)=>{setFile(e.target.files[0]); setItem({...item,image:e.target.files[0].name})}} required   />
           </div>
       </div><br/>
-      <Button variant="success" type="submit" >
+      <Button variant="warning" style={{padding:10,width:"210px"}} type="submit" >
      Update
     </Button>  
   </form>

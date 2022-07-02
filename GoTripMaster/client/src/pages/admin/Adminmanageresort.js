@@ -71,7 +71,7 @@ axios.get("http://localhost:5000/admin/getresortdatas")
     <AdminNav/>
     <div className="slider-area ">
            
-           <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/contact_hero.jpg" + ")"}} >
+           <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/h1_hero.jpg" + ")"}} >
                <div className="container">
                    <div className="row">
                        <div className="col-xl-12">
@@ -110,18 +110,14 @@ axios.get("http://localhost:5000/admin/getresortdatas")
                                    
                                     </div>
                                     <div className="place-cap-bottom">
-                                        <ul>
-                                            <li> 
-                                            <a onClick={()=>Deleteresortowner(item._id)} class="btn" style={{backgroundColor:'#04495271',color:'white'}}>Delete</a> 
-                                            </li>
-                                            <li> 
+                                        
+                                    <Button variant="warning" style={{padding:10,width:"110px"}} onClick={()=>Deleteresortowner(item._id)} >Delete</Button> 
+                                            
                                             {item.status===0?
-                                              <> <a onClick={()=>ApproveUser(item._id)} class="btn" 
-                                              style={{backgroundColor:'#04495271',color:'white',marginLeft:10}}>
-                                                          Approve</a></>:
+                                              <> <Button variant="warning" style={{padding:10,width:"110px" ,marginLeft:5}}  onClick={()=>ApproveUser(item._id)} class="btn" >
+                                                          Approve</Button></>:
                                               null} 
-                                            </li>
-                                        </ul>
+                                           
                                     </div>
                                 </div>
                             </div>

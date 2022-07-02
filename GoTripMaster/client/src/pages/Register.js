@@ -6,6 +6,7 @@ import {TextField} from '@mui/material'
 import {Form,Button} from "react-bootstrap"
 import { useNavigate,Link } from 'react-router-dom';
 import Footer from '../Components/Footer';
+import HomeNav from '../Components/HomeNav';
 function Register() {
     const navigate=useNavigate()
     const [contacts,setContacts]=useState({
@@ -65,7 +66,7 @@ function Register() {
               }
      
              else{
-                alert("Registration Failed!")
+                 alert(response.data.message);
              }
              
      
@@ -73,20 +74,21 @@ function Register() {
             .catch((error) => {
               console.log(error);
              
-                alert("Registration Failed!")
+              alert(error.response.data.message)
              
             });
           }
           }
   return (
     <div>
+      <HomeNav/>
         <div className="slider-area ">
                
                <div className="slider-active">
                    <div className="single-slider hero-overly  slider-height d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/h1_hero.jpg" + ")"}}  >
                        <div className="container">
                            <div className="row">
-                               <div className="col-xl-10 col-lg-10 col-md-10">
+                               <div className="col-xl-11 col-lg-11 col-md-11">
                                <div className="container py-5 h-100">
     <div className="row d-flex justify-content-center align-items-center h-100">
       <div className="col-lg-10 col-xl-9">
@@ -125,9 +127,7 @@ function Register() {
                   <p class="text-center text-muted mt-5 mb-0">Have already an account?<span><Link to='/login'>
 
                   <h6>Login here</h6>
-                  </Link></span>
-
-                  </p>
+                  </Link></span></p>
                 </div>
               </div>
             </form>

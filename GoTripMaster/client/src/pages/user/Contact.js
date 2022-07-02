@@ -36,7 +36,7 @@ function Contact() {
         <UserNav/>
         <div className="slider-area ">
    
-    <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/contact_hero.jpg" + ")"}}>
+    <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/h1_hero.jpg" + ")"}}>
         <div className="container">
             <div className="row">
                 <div className="col-xl-12">

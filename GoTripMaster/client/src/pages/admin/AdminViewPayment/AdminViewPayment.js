@@ -4,6 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import axios from 'axios';
 import AdminNav from '../../../Components/AdminNav';
 import { useNavigate } from 'react-router-dom'
+import Footer from '../../../Components/Footer';
 
 
 function AdminViewPayment() {
@@ -29,7 +30,7 @@ function AdminViewPayment() {
     <AdminNav/>
     <div className="slider-area ">
          
-         <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/contact_hero.jpg" + ")"}} >
+         <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/h1_hero.jpg" + ")"}} >
              <div className="container">
                  <div className="row">
                      <div className="col-xl-12">
@@ -51,7 +52,7 @@ function AdminViewPayment() {
                             <div className="col-xl-4 col-lg-4 col-md-6">
                             <div className="single-place mb-30">
                                 <div className="place-img">
-                                    <img style={{minHeight:"320px"}}src={`./upload/${item1?.packagedetails?.image}`} alt=""/>
+                                    <img style={{minHeight:"345px"}}src={`./upload/${item1?.packagedetails?.image}`} alt=""/>
                                 </div>
                                 <div className="place-cap">
                                     <div className="place-cap-top">
@@ -71,7 +72,7 @@ function AdminViewPayment() {
                     </div>
                 </div>
             </div>
-           
+        <Footer/>   
      </div>
   )
 }

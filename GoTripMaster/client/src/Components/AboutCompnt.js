@@ -18,30 +18,30 @@ function AboutCompnt() {
                             <div className="right-caption">
                                
                                 <div className="section-tittle section-tittle2">
-                                    <span>About Our Company</span>
-                                    <h2>We are Go Trip <br/>Ravels Support Company</h2>
+                                   
+                                    <h2>We are Go Trip .<br/>Travels Support Company</h2>
                                 </div>
                                 <div className="support-caption">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+                                    <p>Planning every single trip needs answers to a number of questions. Holidify is attempting to collect all the information that you will ever need to plan your trip - from when, where and how, to more hidden gems in every destination, Holidify is the one-stop solution to all your travel planning needs.</p>
                                     <div className="select-suport-items">
-                                        <label className="single-items">Lorem ipsum dolor sit amet
+                                        <label className="single-items">Goes Around the Globe.
                                             <input type="checkbox" checked="checked active"/>
                                             <span className="checkmark"></span>
                                         </label>
-                                        <label className="single-items">Consectetur adipisicing sed do
+                                        <label className="single-items">Exhaustive, Reliable Content.
                                             <input type="checkbox" checked="checked active"/>
                                             <span className="checkmark"></span>
                                         </label>
-                                        <label className="single-items">Eiusmod tempor incididunt
+                                        <label className="single-items">Bootstrapped Success.
+
                                             <input type="checkbox" checked="checked active"/>
                                             <span className="checkmark"></span>
                                         </label>
-                                        <label className="single-items">Ad minim veniam, quis nostrud.
+                                        <label className="single-items"> making a dream comeback.
                                             <input type="checkbox" checked="checked active"/>
                                             <span className="checkmark"></span>
                                         </label>
                                     </div>
-                                    <a href="#" className="btn border-btn">About us</a>
                                 </div>
                             </div>
                         </div>
@@ -59,8 +59,7 @@ function AboutCompnt() {
                             <div className="testimonial-caption ">
                                 <div className="testimonial-top-cap">
                                     <img src="assets/img/icon/testimonial.png" alt=""/>
-                                    <p>Logisti Group is a representative logistics operator providing full range of ser
-                                        of customs clearance and transportation worl.</p>
+                                    <p>Thank you very much for all your assistance for my safe trip to</p>
                                 </div>
                      
                                 <div className="testimonial-founder d-flex align-items-center justify-content-center">
@@ -69,7 +68,7 @@ function AboutCompnt() {
                                     </div>
                                     <div className="founder-text founder-text2">
                                         <span>Jessya Inn</span>
-                                        <p>Co Founder</p>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -80,8 +79,7 @@ function AboutCompnt() {
                             <div className="testimonial-caption ">
                                 <div className="testimonial-top-cap">
                                     <img src="assets/img/icon/testimonial.png" alt=""/>
-                                    <p>Logisti Group is a representative logistics operator providing full range of ser
-                                        of customs clearance and transportation worl.</p>
+                                    <p>Thank you so much for your help in organising our India trip. We had an absolutely fantastic time, helped by your companies amazing organisation and all your great staff.</p>
                                 </div>
                                
                                 <div className="testimonial-founder d-flex align-items-center justify-content-center">
@@ -90,7 +88,6 @@ function AboutCompnt() {
                                     </div>
                                     <div className="founder-text founder-text2">
                                         <span>Jessya Inn</span>
-                                        <p>Co Founder</p>
                                     </div>
                                 </div>
                             </div>

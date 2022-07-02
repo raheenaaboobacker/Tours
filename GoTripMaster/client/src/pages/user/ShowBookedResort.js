@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Footer from '../../Components/Footer';
 import UserNav from '../../Components/UserNav'
 import { useNavigate } from 'react-router-dom'
+import { Button } from 'react-bootstrap';
 
 
 
@@ -38,20 +39,27 @@ const handleClickOpen=(id)=>{
   return (
     <div>
     <UserNav/>
+    <div className="slider-area ">
+           
+           <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/h1_hero.jpg" + ")"}} >
+               <div className="container">
+                   <div className="row">
+                       <div className="col-xl-12">
+                           <div className="hero-cap text-center">
+                               <h2>Booked Resorts</h2>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
     <div class="favourite-place place-padding">
             <div class="container">
-                
-                <div class="row"style={{marginTop:-60}}>
-                    <div class="col-lg-12">
-                        <div class="section-tittle text-center">
-                            <h2>Booked Resort</h2>
-                        </div>
-                    </div>
-                </div>
                 <div className="row">
-                    {item
-                    
-                    .map((u)=>(
+                {item.length>0?<>
+                        {item
+                        
+                        .map((u)=>(
                         <div className="col-xl-4 col-lg-4 col-md-6">
                         <div className="single-place mb-30">
                             <div className="place-img">
@@ -68,15 +76,17 @@ const handleClickOpen=(id)=>{
                                 </div>
                                 <div className="col-xl-5">
                                   
-                                  <button type="button" className="btn btn-primary"  onClick={()=>{handleClickOpen(u._id)}}>
+                                <Button style={{padding:10,width:"110px"}} variant="warning"  onClick={()=>{handleClickOpen(u._id)}}>
                              Cancel
-                          </button> 
+                          </Button> 
                           </div>
                             </div>
                            
                         </div>
                     </div>
-                    ))}
+                    ))}</>:<div style={{width:"600px", margin:"auto"}}><div style={{textAlign:"center",fontSize:20}}  className="alert alert-warning" role="alert">
+                    Empty!
+                   </div></div>}
                 
                   
                 </div>

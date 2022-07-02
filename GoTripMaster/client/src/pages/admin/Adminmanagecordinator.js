@@ -60,7 +60,7 @@ console.log(error);
       <AdminNav/>
       <div className="slider-area ">
            
-           <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/contact_hero.jpg" + ")"}} >
+           <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/h1_hero.jpg" + ")"}} >
                <div className="container">
                    <div className="row">
                        <div className="col-xl-12">
@@ -81,8 +81,7 @@ console.log(error);
                         .map((item,i)=>(
                            <>{item.status===1?<> <div className="col-xl-4 col-lg-4 col-md-6">
                             <div className="single-place mb-30">
-                                <div className="place-cap">
-                                 <div className="card-title">
+                            <div style={{padding: "28px 40px", border:" 1px solid #f0f1f2"}}>                                 <div className="card-title">
                                     <PersonIcon sx={{ fontSize: 40 }}/>
                                 </div>
                                     <div className="place-cap-top">
@@ -92,10 +91,10 @@ console.log(error);
                                     <h5 className="card-text" key={i}>email : {item.registerdetails[0].email}</h5>
                                    
                                     </div>
-                                    <div className="place-cap-bottom">
+                                    <div className="place-cap-bottom" style={{padding:5}}>
                                         <ul>
                                             <li> 
-                                            <a onClick={()=>DeleteCordinator(item._id)} class="btn" style={{backgroundColor:'#04495271',color:'white'}}>Delete</a> 
+                                            < Button style={{padding:10,width:"110px"}} variant="warning" onClick={()=>DeleteCordinator(item._id)}>Delete</Button> 
                                             </li>
                                             
                                         </ul>

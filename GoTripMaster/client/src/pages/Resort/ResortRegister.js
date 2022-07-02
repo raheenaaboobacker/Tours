@@ -6,10 +6,10 @@ import {TextField} from '@mui/material'
 import {Form,Button} from "react-bootstrap"
 import { useNavigate,Link } from 'react-router-dom';
 import Footer from '../../Components/Footer';
+import HomeNav from '../../Components/HomeNav';
 
 function ResortRegister() {
     const navigate=useNavigate()
-    const [token,setToken]=useState(localStorage.getItem("token"))
     const [file,setFile]=useState([" "])
     const [contacts,setContacts]=useState({
       uname:"",
@@ -122,21 +122,20 @@ function ResortRegister() {
             .catch((error) => {
               console.log(error);
              
-                alert("Registration Failed!")
-             
+              alert(error.response.data.message)             
             });
           }
           }
-  return  !token ? (
-    navigate("/login")):(
+  return (
     <div>
+      <HomeNav/>
     <div className="slider-area ">
                
                <div className="slider-active">
                    <div className="single-slider hero-overly  slider-height d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/h1_hero.jpg" + ")"}}  >
                        <div className="container">
                            <div className="row">
-                               <div className="col-xl-10 col-lg-10 col-md-10">
+                               <div className="col-xl-11 col-lg-11 col-md-11">
                                <div className="container py-5 h-100">
 <div className="row d-flex justify-content-center align-items-center h-100">
   <div className="col-lg-10 col-xl-9">
@@ -162,43 +161,39 @@ onChange={handleInputChange} value={contacts.email} required/><br/><br/>
 onChange={handleInputChange} value={contacts.phone} required/><br/><br/>
 <TextField fullWidth  id="outlined-basic5" label="Adress" variant="outlined" name='address' 
 onChange={handleInputChange} value={contacts.address} required/><br/><br/>
-<TextField fullWidth  id="outlined-basic" label=" Resort Name" variant="outlined" name='rname' 
+<TextField fullWidth  id="outlined-basic6" label=" Resort Name" variant="outlined" name='rname' 
 onChange={handleInputChange} value={contacts.rname} required/><br/><br/>
-<TextField fullWidth  id="outlined-basic" label="Description" variant="outlined" name='description' 
+<TextField fullWidth  id="outlined-basic7" label="Description" variant="outlined" name='description' 
 onChange={handleInputChange} value={contacts.description} required/><br/><br/>
-<TextField fullWidth  id="outlined-basic" label="No of rooms" type="number" variant="outlined" name='rooms' 
+<TextField fullWidth  id="outlined-basic8" label="No of rooms" type="number" variant="outlined" name='rooms' 
 onChange={handleInputChange} value={contacts.rooms} required/><br/><br/>
-<TextField fullWidth  id="outlined-basic" label="Price" type="number" variant="outlined" name='price' 
+<TextField fullWidth  id="outlined-basic9" label="Price" type="number" variant="outlined" name='price' 
 onChange={handleInputChange} value={contacts.price} required/><br/><br/>
 </Form.Group>
 
 <Form.Group className="mb-3" controlId="formBasic">
 <TextField fullWidth  id="outlined-password-input" label="Password" type="password" autoComplete="current-password"
 name='password' onChange={handleInputChange} value={contacts.password} required  /><br/><br/>
-<div className="d-flex justify-content">
-<div className="btn btn-mdb-color btn-rounded float-center">
-          <span>Choose file</span>
+      <div className="d-flex justify-content-center">
+      <div className="btn btn-mdb-color btn-rounded float-left">
+      <span>Choose file</span>
           <input type="file" name="image" required  onChange={(e)=>{setFile(e.target.files[0]); setContacts({...contacts,image:e.target.files[0].name})}} multiple/>
-      </div>
-      </div>
+       </div>
+  </div>
 </Form.Group>
-<div className="d-flex justify-content-center" >
-<div className="d-grid gap-2">
 
-<div className="d-grid gap-2">
 
-<Button variant="secondary" type="submit" size="lg" >
+<Button style={{padding:10,width:"110px"}} variant="warning"   type="submit" size="lg" >
 Submit
 </Button>
 <p class="text-center text-muted mt-5 mb-0">Have already an account?
-<Link to='/login'>
+
 
 Login here
-</Link>
+
 </p>
-</div>
-</div>
-</div>
+
+
 </form>
 <ToastContainer/>
       </div>

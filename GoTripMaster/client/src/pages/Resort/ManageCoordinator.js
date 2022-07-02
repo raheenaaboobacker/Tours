@@ -4,7 +4,7 @@ import Footer from '../../Components/Footer'
 import PersonIcon from '@mui/icons-material/Person';
 import ResortNav from '../../Components/ResortNav'
 import { useNavigate } from 'react-router-dom'
-
+import { Button } from 'react-bootstrap';
 
 function ManageCoordinator() {
     const [users,setUsers]=useState([])
@@ -65,6 +65,9 @@ function ManageCoordinator() {
       
      });
    }
+   const item=users.filter((filterdata) => {
+    return filterdata.registerdetails[0].r_id.includes(localStorage.getItem("resort_Id"))
+  })
   return !token ? (
     navigate("/login")):(
     <div>
@@ -72,7 +75,7 @@ function ManageCoordinator() {
       <ResortNav/>
       <div className="slider-area ">
            
-           <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/contact_hero.jpg" + ")"}} >
+           <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/h1_hero.jpg" + ")"}} >
                <div className="container">
                    <div className="row">
                        <div className="col-xl-12">
@@ -89,14 +92,12 @@ function ManageCoordinator() {
                     
                  
                     <div className="row">
-                        {users.filter((filterdata) => {
-              return filterdata.registerdetails[0].r_id.includes(localStorage.getItem("resort_Id"))
-            })
-                        .map((item,i)=>(
+                    {item.length>0?<>
+                        {item .map((item,i)=>(
                             <div className="col-xl-4 col-lg-4 col-md-6">
                             <div className="single-place mb-30">
                            
-                                <div className="place-cap">
+                            <div style={{padding: "28px 40px", border:" 1px solid #f0f1f2"}}>
                                 <div className="card-title">
                                     <PersonIcon sx={{ fontSize: 40 }}/>
                                 </div>
@@ -107,24 +108,24 @@ function ManageCoordinator() {
                                     <h5 className="card-text" key={i}>email : {item.registerdetails[0].email}</h5>
                                    
                                     </div>
+                                  <br/><br/>
                                     <div className="place-cap-bottom">
-                                        <ul>
-                                            <li> 
-                                            <a onClick={()=>DeleteCordinator(item._id)} class="btn" style={{backgroundColor:'#04495271',color:'white'}}>Delete</a> 
-                                            </li>
-                                            <li> 
+                                       
+                                            < Button style={{padding:10,width:"110px"}} variant="warning" onClick={()=>DeleteCordinator(item._id)} >Delete</Button> 
+                                          
                                             {item.status===0?
-                                              <> <a onClick={()=>ApproveUser(item._id)} class="btn" 
-                                              style={{backgroundColor:'#04495271',color:'white',marginLeft:10}}>
-                                                          Approve</a></>:
+                                              <>  < Button style={{marginLeft:10,padding:10,width:"110px"}} variant="warning" onClick={()=>ApproveUser(item._id)}
+                                             >
+                                                          Approve</Button></>:
                                               null} 
-                                            </li>
-                                        </ul>
+                                            
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        ))}
+                       ))}</>:<div style={{width:"600px", margin:"auto"}}><div style={{textAlign:"center",fontSize:20}}  className="alert alert-warning" role="alert">
+                       Coordinator Not Found!
+                      </div></div>}
                       
                     </div>
                 </div>

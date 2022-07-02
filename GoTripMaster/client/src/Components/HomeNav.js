@@ -4,36 +4,78 @@ import { useNavigate } from 'react-router-dom'
 
 function HomeNav() {
   return (
+    <header>
     
+   <div className="header-area">
+        <div className="main-header ">
+            <div className="header-top top-bg d-none d-lg-block">
+               <div className="container">
+                <div className="row justify-content-between align-items-center">
+                    <div className="col-lg-8">
+                        <div className="header-info-left">
+                            <ul>                          
+                                <li>gotrip@gotrip.com</li>
+                                <li>666 569 025077</li>
+                                <li>broklyn street new york</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <div className="header-info-right f-right">
+                            <ul className="header-social">    
+                                <li><a href="javascript:void(0)"><i className="fab fa-twitter"></i></a></li>
+                                <li><a href="javascript:void(0)"><i className="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="javascript:void(0)"><i className="fab fa-facebook-f"></i></a></li>
+                               <li> <a href="javascript:void(0)"><i className="fab fa-pinterest-p"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                   </div>
+               </div>
+            </div>
+           <div className="header-bottom  header-sticky">
+                <div className="container">
+                    <div className="row align-items-center">
+                       
+                        <div className="col-xl-2 col-lg-2 col-md-1">
+                            <div className="logo">
+                              <a href="index.html"><img src="assets/img/logo/logo.png" alt=""/></a>
+                            </div>
+                        </div>
+                        <div className="col-xl-10 col-lg-10 col-md-10">
+                           
+                            <div className="main-menu f-right d-none d-lg-block">
+                                <nav>               
+                                    <ul id="navigation">                                                                                                                                     
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="/about">About US</a></li>
+                                        <li><a href="/#places">Package</a></li>
+                                        <li><a href="/#resorts">Resort</a></li>
+                                        <li><a href="/login">Sign In</a>
+                                        </li>
+                                        <li><a>Sign up</a>
+                                            <ul className="submenu">
+                                                <li><a href="/register">User</a></li>
+                                                <li><a href="/coordinatorRegister">Coordinator</a></li>
+                                                <li><a href="/resortRegister">Resort</a></li>                                            </ul>
+                                        </li>
+                                        </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        
+                        <div className="col-12">
+                            <div className="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
+   </div>
+  
+</header>
         
-<Navbar bg="light" expand="lg"style={{minHeight:"80px",marginBottom:"1px"}}>
-  <Container>
-  <Navbar.Brand href="/">
-      <img
-        src="assets/img/logo/logo.png"
-        width="150"
-        height="60"
-       marginTop="-5"
-        className="d-inline-block align-top"
-        alt="React Bootstrap logo"
-      />
-      </Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="d-flex" style={{fontSize:18,marginLeft:150}}>
-        <Nav.Link href="/"><h4>Home</h4></Nav.Link>
-        <Nav.Link href="/about"><h4>About Us</h4></Nav.Link>
-        <Nav.Link href="/login"><h4>Sign In</h4></Nav.Link>
-        <NavDropdown title="Sign up" style={{fontSize:16,marginTop:-3}} id="basic-nav-dropdown">
-          <NavDropdown.Item href="/register"><h5>User</h5></NavDropdown.Item>
-          <NavDropdown.Item href="/coordinatorRegister"><h5>Coordinator</h5></NavDropdown.Item>
-          <NavDropdown.Item href="/resortRegister"><h5>Resort</h5></NavDropdown.Item>
-        </NavDropdown>
-      </Nav>
-    </Navbar.Collapse>
-  </Container>
-</Navbar>
-       
+
  )
 }
 

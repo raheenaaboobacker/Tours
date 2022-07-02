@@ -113,7 +113,7 @@ navigate("/coordinatorpackages")
           <input type="file" name="image" required  onChange={(e)=>{setFile(e.target.files[0]); setItem({...item,image:e.target.files[0].name})}} />
       </div>
   </div><br/>
-  <Button variant="success" type="submit" >
+  <Button variant="warning" style={{padding:10,width:"210px"}} type="submit" >
  ADD
 </Button>  
 </form>

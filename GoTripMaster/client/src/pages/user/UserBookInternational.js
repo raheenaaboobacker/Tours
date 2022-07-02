@@ -117,7 +117,8 @@ localStorage.setItem("payment",true)
                 <form action="" >
                 <div class="row">
                 <div class="col-md-6"></div>
-                <div class="col-md-6"><Button  variant="secondary" onClick={() => handleAddPlayers()}>
+                <div class="col-md-6">
+                <Button style={{padding:10,width:"110px"}} variant="warning" onClick={() => handleAddPlayers()}>
                 ADD PASSENGERS
                </Button></div>
                   </div>
@@ -126,10 +127,11 @@ localStorage.setItem("payment",true)
                 <>
                   {contacts.map((field, index) => (<>
                     <h4 style={{ color: "wheat" }}>Passenger{index+1} </h4>
+                    {error===true?<label style={{color:"red",marginLeft:"100px"}}>please fill all field</label>:null }
+
                  <div class="row">
                  <div class="col-md-6">
                 
-                 {error===true?<label style={{color:"red",marginLeft:"100px"}}>please fill all field</label>:null }
 
                    <div class="form-group"> <input class="form-control" type="string" name="p_name"
                       placeholder="Enter Passenger Name" value={contacts.p_name}
@@ -147,11 +149,12 @@ localStorage.setItem("payment",true)
                    </div>
                  </div>
                  <div class="col-md-6">
+                 {erradhar===true?<label style={{color:"red"}}>Enter valid Adhar Number</label>:null }
+
                  <div class="form-group"> <input class="form-control" type="number" name="adhar_no"
                       placeholder="Enter Adhar Number" value={contacts.adhar_no}
                       onChange={(event) =>
                         handleInputChange(index, event)} required/>
-                    {erradhar===true?<label style={{color:"red"}}>Enter valid Adhar Number</label>:null }
 
                      </div>
                    <input type="date" min={newdate} class="form-control" placeholder="expairt date"
@@ -164,8 +167,7 @@ localStorage.setItem("payment",true)
                    <br />
          
                    
-                   <Button
-                          variant="secondary"
+                   <Button style={{padding:10,width:"110px"}} variant="warning"
                           onClick={() => handleRemovePlayers(index)}
                         >
                           Cancel

@@ -10,6 +10,11 @@ import AboutCompnt from '../../Components/AboutCompnt'
 import { toast,ToastContainer } from 'react-toastify'
 
 function Useviewresort() {
+    const[error,setError]=useState(false)
+    const[errordate,setErrordate]=useState(false);
+      const[errpassport,setErrpassport]=useState(false);
+      
+  
     const [token,setToken]=useState(localStorage.getItem("token"))
     var dateObj = new Date();
     var month = dateObj.getUTCMonth() + 1;
@@ -29,6 +34,8 @@ function Useviewresort() {
   const [item,setItem]=useState([])
   const [temp,setTemp]=useState([])
 const [rooms,setRooms]=useState("1")
+const [searchitem,setSearchitem]=useState("")
+
   useEffect(()=>{
     if(!token){ 
         navigate("/login")
@@ -63,22 +70,25 @@ const handleClickOpen = (id) => {
     })
     };
 const buttonClick=(bookdata)=>{
+    setError(false)
+    setErrordate(false)
     console.log(bookdata);
-    if(bookdata.count==""){
-        toast.warning("Please choose number of adults!!",{autoClose:3000,theme:'light'})
-
-    }else if(bookdata.rooms==""){
-        toast.warning("Please Choose no of  rooms!!",{autoClose:3000,theme:'light'})
-
+    if(bookdata.count===""||bookdata.rooms==""||bookdata.children==""||bookdata.checkin===""||bookdata.checkout===""){
+        setError(true)
     }else
     if(bookdata.checkin > bookdata.checkout){
-        toast.warning("please check ckeckout date!!it must be after checkin date",{autoClose:3000,theme:'light'})
+        setErrordate(true)
     }else{
         localStorage.setItem("payment",true)
     navigate("/userpayresort", { state: { bookdata } });
     }  
    
 }
+const addvalue=(e)=>{
+    console.log(e.target.value);
+    setSearchitem(e.target.value)
+   console.log(item);
+    }
 const handleInputChange=(e)=>{
     const {name,value}=e.target
     setBookdata({
@@ -95,6 +105,11 @@ const myExample = () => {
     }
     return myArray
 } 
+const resortdata= item.filter((filterdata)=>{
+    if(filterdata.place.toLowerCase().includes(searchitem.toLowerCase())){
+      return filterdata
+    }
+  })
 
   return (
     <div>   <UserNav/>
@@ -114,11 +129,20 @@ const myExample = () => {
                            </div>
                          
                            <div className="row">
-                               <div className="col-xl-12">
-                                  
-                                 	
-                               </div>
-                           </div>
+                                <div className="col-xl-12">
+                                   
+                                    <form action="#" className="search-box">
+                                        <div className="input-form mb-30">
+                                            <input type="text" placeholder="Where Would you like to go ?" 
+                                             onChange={addvalue} value={searchitem} name="name" required/>
+                                        </div>
+                                       
+                                        <div className="search-form mb-60 xl-30 w-30">
+                                            <a href="#resort">Search</a>
+                                        </div>	
+                                    </form>	
+                                </div>
+                            </div>
                        </div>
                    </div>
                </div>
@@ -131,14 +155,15 @@ const myExample = () => {
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-tittle text-center">
-                        <span>FEATURED Roooms</span>
+                       
                         <h2>Resorts</h2>
                     </div>
                 </div>
             </div>
-            <div className="row">
-                {item
-                .map((u)=>(
+            <div className="row"  id='resort'>
+            {resortdata.length > 0 ? (
+                        resortdata.map((u,i)=>
+                        (
                     <div className="col-xl-4 col-lg-4 col-md-6">
                     <div className="single-place mb-30">
                         <div className="place-img">
@@ -154,14 +179,16 @@ const myExample = () => {
                                 {temp.address},{temp.place},{temp.phone}
                             </div>
                             <div className="col-xl-5">
-                            <button type="button" className="btn btn-primary" data-toggle="modal"   onClick={()=>{console.log("add"+u._id);handleClickOpen(u._id)}} data-target="#exampleModalCenter">
+                            <Button style={{padding:10,width:"110px"}} variant="warning"  data-toggle="modal"   onClick={()=>{console.log("add"+u._id);handleClickOpen(u._id)}} data-target="#exampleModalCenter">
                                 Book Now
-                            </button>   
+                            </Button>   
                             </div>
                         </div>
                     </div>
                 </div>
-                ))}
+               ) )): <div style={{width:"600px", margin:"auto"}}><div style={{textAlign:"center",fontSize:20}}  className="alert alert-warning" role="alert">
+               No Result Found!
+              </div></div>}
 
             </div>
         </div>
@@ -188,13 +215,15 @@ const myExample = () => {
          </div>
          <div >  
              <div class="col-md-12 col-md-pull-0">
-                    <div class="booking-form">
+                    <div >
                         <form  >
-                           
+                        {error===true?<label style={{color:"red"}}>please fill all field</label>:null }
+
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <span class="form-label">Check In</span>
+
                                         <input class="form-control" type="date"
                                           name="checkin"
                                           min={newdate}
@@ -215,6 +244,7 @@ const myExample = () => {
                                     </div>
                                 </div>
                             </div>
+                            {errordate===true?<label style={{color:"red"}}>please check ckeckout date!!it must be after checkin date</label>:null}
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group">
@@ -276,7 +306,7 @@ const myExample = () => {
                             <div class="row">
                         <div class="col-xs-12">
                       
-                            <button class="btn btn-warning btn-lg btn-block" data-dismiss="modal"onClick={()=>{buttonClick(bookdata)}} >Book </button>
+                            <button class="btn btn-warning btn-lg btn-block" type='submit' onClick={()=>{buttonClick(bookdata)}} data-dismiss="modal" >Book </button>
                           
                         </div>
                     </div>

@@ -41,7 +41,7 @@ function CoordinatorViewPackages() {
         <CoordinatorNav/>
       <div className="slider-area ">
            
-           <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/contact_hero.jpg" + ")"}} >
+           <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/h1_hero.jpg" + ")"}} >
                <div className="container">
                    <div className="row">
                        <div className="col-xl-12">
@@ -53,7 +53,18 @@ function CoordinatorViewPackages() {
                </div>
            </div>
        </div>
-       <div className="favourite-place place-padding">
+       
+       <Row>
+        <Col></Col>
+        <Col><Link to={'/coordinatoraddpackage'}>
+        <div style={{padding:"100px 100px 0 100px"}}>  <button type='button' className="button button-contactForm boxed-btn"  >
+       Add Packages
+      </button></div>
+      </Link></Col>
+        <Col></Col>
+      </Row>
+      
+       <div className="favourite-place place-padding" style={{paddingTop: "100px"}} > 
                 <div className="container">
                     
                     <div className="row">
@@ -67,25 +78,22 @@ function CoordinatorViewPackages() {
                                 <div className="place-cap">
                                     <div className="place-cap-top">
                                        
-                                        <h3><a href="#">{u.pname}</a></h3>{u.category_id==1?<span>International Package</span>:null}
+                                    <h3>{u.pname}<span style={{paddingLeft:25}}>{u.category_id===1?<><img style={{width:35,height:35}} src='https://i.pinimg.com/564x/12/8c/d6/128cd630c3fdc4c6d9dea5ca5c6624d7.jpg'/></>:null}</span></h3>
                                         <p className="dolor">₹{u.price} <span>/ Per Person</span></p>
-                                        <p>{u.description}</p>
+                                        {u.description}
                                     </div>
                                     <div className="place-cap-bottom">
-                                        <ul>
-                                            <li> 
+                                         
                                             <Link to={`/coordinatorupdatepackage/${u._id}`}>
-                                              <Button  variant="secondary"  >
+                                              <Button style={{padding:10,width:"110px"}} variant="warning"  >
                                                   Edit
                                               </Button>
                                             </Link>
-                                            </li>
-                                            <li> 
-                                              <Button style={{marginLeft:"20px",width:"110px"}} variant="secondary" type='submit' onClick={()=>{deleteitem(u._id)}}  >
+                                          
+                                              <Button style={{padding:10,width:"110px",marginLeft:10}} variant="warning" type='submit' onClick={()=>{deleteitem(u._id)}}  >
                                                 Delete
                                                </Button>
-                                            </li>
-                                        </ul>
+                                           
                                     </div>
                                 </div>
                             </div>
@@ -96,15 +104,7 @@ function CoordinatorViewPackages() {
                 </div>
             </div>
             
-      <Row>
-        <Col></Col>
-        <Col><Link to={'/coordinatoraddpackage'}>
-      <Button style={{ marginTop:"-100px"}} variant="warning"  >
-       Add Packages
-      </Button>
-      </Link></Col>
-        <Col></Col>
-      </Row>
+     
      
             <Footer/>
       

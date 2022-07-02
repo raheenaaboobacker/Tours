@@ -11,34 +11,78 @@ function UserNav() {
    navigate('/')
   }
   return (
-    <Navbar bg="light" expand="lg" style={{minHeight:"80px",marginBottom:"1px"}}>
-    <Container>
-    <Navbar.Brand href="/">
-        <img
-          src="assets/img/logo/logo.png"
-          width="150"
-          height="60"
-         
-          className="d-inline-block align-top"
-          alt="React Bootstrap logo"
-        />
-        </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="d-flex" style={{fontSize:18,marginLeft:150}}>
-          <Nav.Link href="/userdashboard"><h4>Home</h4></Nav.Link>
-          <Nav.Link href="/userviewresort"><h4>Resorts</h4></Nav.Link>
-          {/* <Nav.Link href="/about"><h4>About Us</h4></Nav.Link> */}
-          <Nav.Link href="/contact"><h4>Contact Us</h4></Nav.Link>
-          <Nav.Link onClick={logout}><h4>Logout</h4></Nav.Link>
-          <NavDropdown title="Booking Details" style={{fontSize:16,marginTop:-3}} id="basic-nav-dropdown">
-          <NavDropdown.Item href="/userShowBookedResort"><h5>Resort</h5></NavDropdown.Item>
-          <NavDropdown.Item href="/userShowBookedPackage"><h5>Packages</h5></NavDropdown.Item>
-        </NavDropdown>
-        </Nav>
-      </Navbar.Collapse>
-    </Container>
-  </Navbar>
+    <header>
+    
+   <div className="header-area">
+        <div className="main-header ">
+            <div className="header-top top-bg d-none d-lg-block">
+               <div className="container">
+                <div className="row justify-content-between align-items-center">
+                    <div className="col-lg-8">
+                        <div className="header-info-left">
+                            <ul>                          
+                                <li>gotrip@gotrip.com</li>
+                                <li>666 569 025077</li>
+                                <li>broklyn street new york</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <div className="header-info-right f-right">
+                            <ul className="header-social">    
+                                <li><a href="javascript:void(0)"><i className="fab fa-twitter"></i></a></li>
+                                <li><a href="javascript:void(0)"><i className="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="javascript:void(0)"><i className="fab fa-facebook-f"></i></a></li>
+                               <li> <a href="javascript:void(0)"><i className="fab fa-pinterest-p"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                   </div>
+               </div>
+            </div>
+           <div className="header-bottom  header-sticky">
+                <div className="container">
+                    <div className="row align-items-center">
+                       
+                        <div className="col-xl-2 col-lg-2 col-md-1">
+                            <div className="logo">
+                              <a href="index.html"><img src="assets/img/logo/logo.png" alt=""/></a>
+                            </div>
+                        </div>
+                        <div className="col-xl-10 col-lg-10 col-md-10">
+                           
+                            <div className="main-menu f-right d-none d-lg-block">
+                                <nav>               
+                                    <ul id="navigation">                                                                                                                                     
+                                        <li><a href="/userdashboard">Home</a></li>
+                                        <li><a href="/userviewresort">Resort</a></li>
+                                        <li><a href="/contact">Contact Us</a></li>
+                                      
+                                        <li><a>Booking Details</a>
+                                            <ul className="submenu">
+                                                <li><a href="/userShowBookedResort">Resort</a></li>
+                                                <li><a href="/userShowBookedPackage">Package</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a onClick={logout}>Logout</a></li>
+                                        </ul>
+                                        
+                                        
+                                </nav>
+                            </div>
+                        </div>
+                        
+                        <div className="col-12">
+                            <div className="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
+   </div>
+  
+</header>
+    
   )
 }
 

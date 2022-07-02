@@ -40,16 +40,22 @@ function AdminViewResortBooking() {
   return (
     <div>
         <AdminNav/>
+        <div className="slider-area ">
+               
+               <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/h1_hero.jpg" + ")"}} >
+                   <div className="container">
+                       <div className="row">
+                           <div className="col-xl-12">
+                               <div className="hero-cap text-center">
+                                   <h2>BOOKED RESORTS</h2>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
         <div class="favourite-place place-padding">
             <div class="container">
-                
-                <div class="row"style={{marginTop:-60}}>
-                    <div class="col-lg-12">
-                        <div class="section-tittle text-center">
-                            <h2>Booked Resort</h2>
-                        </div>
-                    </div>
-                </div>
                 <div className="row">
                     {item
                     

@@ -5,12 +5,12 @@ import axios from 'axios'
 import {TextField} from '@mui/material'
 import {Form,Button} from "react-bootstrap"
 import { useNavigate,Link } from 'react-router-dom';
+import HomeNav from '../../Components/HomeNav';
 // import Footer from '../Components/Footer';
 
 function CoordinatorRegister() {
     const navigate=useNavigate()
     const [resort,setResort]=useState([])
-    const [token,setToken]=useState(localStorage.getItem("token"))
     const [contacts,setContacts]=useState({
       c_Id:"",
       uname:"",
@@ -105,9 +105,9 @@ function CoordinatorRegister() {
     // }
     // return myArray
 }
-  return !token ? (
-    navigate("/login")):(
+  return(
     <div>
+      <HomeNav/>
          <div>
         <div className="slider-area ">
                
@@ -115,7 +115,7 @@ function CoordinatorRegister() {
                    <div className="single-slider hero-overly  slider-height d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/h1_hero.jpg" + ")"}}  >
                        <div className="container">
                            <div className="row">
-                               <div className="col-xl-10 col-lg-10 col-md-10">
+                               <div className="col-xl-11 col-lg-11 col-md-11">
                                <div className="container py-5 h-100">
     <div className="row d-flex justify-content-center align-items-center h-100">
       <div className="col-lg-10 col-xl-9">
@@ -135,22 +135,9 @@ function CoordinatorRegister() {
                  
                     { resort.map((e, key) => {
         return <option key={key} value={e._id}>{e.rname}</option>})}
-                    {/* {myExample()} */}
+              
              </select>             
-                
- {/* <select style={{borderRadius:5, height:"50px"}}
-                    className="form-select" 
-                    aria-label="Default select example"
-                    name="role"
-                    value={contacts.role}
-                    onChange={handleInputChange}
-                   
-                    >
-                     
-                         <option selected>Choose </option>
-                        <option value="2">User</option>
-                        <option value="1">Co-ordinator</option>
-                  </select> */}
+  
                     </div>
 <Form.Group className="mb-3" controlId="formBasic">
 <TextField fullWidth  id="outlined-basic" label="User Name" variant="outlined" name='uname' 
@@ -173,7 +160,7 @@ name='password' onChange={handleInputChange} value={contacts.password} required 
 
 <div className="d-grid gap-2">
 
-<Button variant="secondary" type="submit" size="lg" >
+<Button variant="warning" type="submit" size="lg" >
 Submit
 </Button>
 <p class="text-center text-muted mt-5 mb-0">Have already an account?<span><Link to='/login'>

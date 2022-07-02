@@ -37,6 +37,17 @@ function Home() {
         const showAlert=()=>{
             alert("Please login")
         }
+        const filteredOptions = item
+        .filter((filterdata)=>{
+            if(filterdata.pname.toLowerCase().includes(searchitem.toLowerCase())){
+              return filterdata
+            }
+          });
+          const resortdata= resort.filter((filterdata)=>{
+            if(filterdata.place.toLowerCase().includes(searchitem.toLowerCase())){
+              return filterdata
+            }
+          })
   return (
       <div>
           <HomeNav/>
@@ -87,13 +98,9 @@ function Home() {
                         </div>
                     </div>
                     <div className="row" id='packages'>
-                        {item
-                        .filter((filterdata)=>{
-                            if(filterdata.pname.toLowerCase().includes(searchitem.toLowerCase())){
-                              return filterdata
-                            }
-                          })
-                        .map((u)=>(
+                        {filteredOptions.length > 0 ? (
+                        filteredOptions.map((u,i)=>
+                        (
                             <div className="col-xl-4 col-lg-4 col-md-6">
                             <div className="single-place mb-30">
                                 <div className="place-img">
@@ -103,9 +110,7 @@ function Home() {
                                 </div>
                                 <div className="place-cap">
                                     <div className="place-cap-top">
-                                        <span><i className="fas fa-star"></i><span>8.0 Superb</span> </span>
-                                        <h3><a  onClick={showAlert}>{u.pname}</a></h3>
-                                        <p className="dolor">₹{u.price} <span>/ Per Person</span></p>
+                                    <h3>{u.pname}<span style={{paddingLeft:25}}>{u.category_id===1?<><img style={{width:35,height:35}} src='https://i.pinimg.com/564x/12/8c/d6/128cd630c3fdc4c6d9dea5ca5c6624d7.jpg'/></>:null}</span></h3>                                        <p className="dolor">₹{u.price} <span>/ Per Person</span></p>
                                     </div>
                                     <div className="place-cap-bottom">
                                         <ul>
@@ -116,7 +121,9 @@ function Home() {
                                 </div>
                             </div>
                         </div>
-                        ))}
+                       ) )): <div style={{width:"600px", margin:"auto"}}><div style={{textAlign:"center",fontSize:20}}  className="alert alert-warning" role="alert">
+                      No Result Found!
+                     </div></div>}
                         
                        
                        
@@ -135,14 +142,9 @@ function Home() {
                             </div>
                         </div>
                     </div>
-                    <div className="row">
-                        {resort
-                        .filter((filterdata)=>{
-                            if(filterdata.place.toLowerCase().includes(searchitem.toLowerCase())){
-                              return filterdata
-                            }
-                          })
-                        .map((u)=>(
+                    <div className="row" id='resorts'>
+                        {resortdata.length > 0 ? (
+                        resortdata.map((u)=>(
                             <div className="col-xl-4 col-lg-4 col-md-6">
                             <div className="single-place mb-30">
                                 <div className="place-img">
@@ -152,7 +154,6 @@ function Home() {
                                 </div>
                                 <div className="place-cap">
                                     <div className="place-cap-top">
-                                        <span><i className="fas fa-star"></i><span>8.0 Superb</span> </span>
                                         <h3><a  onClick={showAlert}>{u.rname}</a></h3>
                                         <p className="dolor">₹{u.price} <span>/ Per Rooms</span></p>
                                    <h4>{u.place}</h4>
@@ -166,7 +167,9 @@ function Home() {
                                 </div>
                             </div>
                         </div>
-                        ))}
+                        ))):<div style={{width:"600px", margin:"auto"}}><div style={{textAlign:"center",fontSize:20}}  className="alert alert-warning" role="alert">
+                        No Result Found!
+                       </div></div>}
                         
                        
                        

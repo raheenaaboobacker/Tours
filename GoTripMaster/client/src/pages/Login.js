@@ -4,6 +4,8 @@ import {Link, useNavigate} from "react-router-dom"
 import axios from "axios"
 import {TextField} from '@mui/material'
 import Footer from "../Components/Footer";
+
+import HomeNav from "../Components/HomeNav";
 function Login() {
   const navigate=useNavigate();
 
@@ -33,7 +35,7 @@ function Login() {
         
           if(response.data.userRole===0){
             localStorage.setItem("token",response.data.token)
-            localStorage.setItem("token",response.data.token)
+           
             sessionStorage.setItem("isLoggedIn",true)
             navigate('/admindashboard')
             }
@@ -70,16 +72,17 @@ function Login() {
           alert(response.data.message)
         }
       })
-      // .catch((error) => {
-      //   console.log(error);
-      //   alert("Bad Credentials");
-      // });
+      .catch((error) => {
+        console.log(error);
+        alert(error.response.data.message)
+            });
   
 
 
   }
   return (
     <div>
+      <HomeNav/>
       <div className="slider-area ">
                
                <div className="slider-active">
@@ -111,7 +114,7 @@ name='password' onChange={handleInputChange} value={contacts.password} required 
 </Form.Group>
 <div className="d-grid gap-2">
 
-<Button variant="secondary" type="submit" size="lg" >
+<Button style={{padding:10,width:"110px"}} variant="warning" type="submit" size="lg" >
 Submit
 </Button>
 <p className="text-center text-muted mt-5 mb-0"> Sign Up?

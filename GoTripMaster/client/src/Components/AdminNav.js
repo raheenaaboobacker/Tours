@@ -10,40 +10,80 @@ function AdminNav() {
       window.sessionStorage.clear();
      navigate('/')
     }
-    return (
-      <Navbar bg="light" expand="lg"style={{minHeight:"80px",marginBottom:"1px"}}>
-      <Container>
-      <Navbar.Brand href="/">
-          <img
-            src="assets/img/logo/logo.png"
-            width="150"
-            height="60"
-           
-            className="d-inline-block align-top"
-            alt="React Bootstrap logo"
-          />
-          </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="d-flex" style={{fontSize:18,marginLeft:150}}>
-            <Nav.Link href="/admindashboard"><h4>Home</h4></Nav.Link>
-            <Nav.Link href="/adminmanageuser"><h4>Users</h4></Nav.Link>
-        <Nav.Link href="/adminmanagecordinator"><h4>Coordinator</h4></Nav.Link>
-        <Nav.Link href="/adminmanageresort"><h4>Resort</h4></Nav.Link>
-        <Nav.Link href="/adminViewFeedback"><h4>FeedBack</h4></Nav.Link>
-            <Nav.Link onClick={logout}><h4>Log Out</h4></Nav.Link>
-            <NavDropdown title="Booking Details" style={{fontSize:16,marginTop:-3}} id="basic-nav-dropdown">
-          <NavDropdown.Item href="/adminViewResortBooking"><h5>Resort</h5></NavDropdown.Item>
-          <NavDropdown.Item href="/adminViewPackageBooking"><h5>Packages</h5></NavDropdown.Item>
-        </NavDropdown>
-        <NavDropdown title="Payment Details" style={{fontSize:16,marginTop:-3}} id="basic-nav-dropdown">
-          <NavDropdown.Item href="/adminViewpaymentresort"><h5>Resort</h5></NavDropdown.Item>
-          <NavDropdown.Item href="/adminViewPayment"><h5>Packages</h5></NavDropdown.Item>
-        </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    return (<header>
+    
+      <div className="header-area">
+           <div className="main-header ">
+                <div className="header-top top-bg d-none d-lg-block">
+                  <div className="container">
+                   <div className="row justify-content-between align-items-center">
+                       <div className="col-lg-8">
+                           <div className="header-info-left">
+                               <ul>                          
+                                   <li>gotrip@gotrip.com</li>
+                                   <li>666 569 025077</li>
+                                   <li>broklyn street new york</li>
+                               </ul>
+                           </div>
+                       </div>
+                       <div className="col-lg-4">
+                           <div className="header-info-right f-right">
+                               <ul className="header-social">    
+                                   <li><a href="javascript:void(0)"><i className="fab fa-twitter"></i></a></li>
+                                   <li><a href="javascript:void(0)"><i className="fab fa-linkedin-in"></i></a></li>
+                                   <li><a href="javascript:void(0)"><i className="fab fa-facebook-f"></i></a></li>
+                                  <li> <a href="javascript:void(0)"><i className="fab fa-pinterest-p"></i></a></li>
+                               </ul>
+                           </div>
+                       </div>
+                      </div>
+                  </div>
+               </div>
+              <div className="header-bottom  header-sticky">
+                   <div className="container">
+                       <div className="row align-items-center">
+                          
+                           <div className="col-xl-2 col-lg-2 col-md-1">
+                               <div className="logo">
+                                 <a href="index.html"><img src="assets/img/logo/logo.png" alt=""/></a>
+                               </div>
+                           </div>
+                           <div className="col-xl-10 col-lg-10 col-md-10">
+                              
+                               <div className="main-menu f-right d-none d-lg-block">
+                                   <nav>               
+                                       <ul id="navigation">                                                                                                                                     
+                                           <li><a href="/admindashboard">Home</a></li>
+                                           <li><a href="/adminmanageuser">User</a></li>
+                                           <li><a href="/adminmanagecordinator">Coordinator</a></li>
+                                           <li><a href="/adminmanageresort">Resort</a></li>
+                                           <li><a href="/adminViewFeedback">Feed back</a></li>
+                                           <li><a>Booking Details</a>
+                                               <ul className="submenu">
+                                                   <li><a href="/adminViewPackageBooking">Package</a></li>
+                                                   <li><a href="/adminViewResortBooking">Resort</a></li>                                            </ul>
+                                           </li>
+                                           <li><a>Payment Details</a>
+                                               <ul className="submenu">
+                                                   <li><a href="/adminViewpaymentresort">Resort</a></li>
+                                                   <li><a href="/adminViewPayment">Package</a></li>                                            </ul>
+                                           </li>
+                                           <li><a onClick={logout}>Logout</a></li>
+                                           </ul>
+                                   </nav>
+                               </div>
+                           </div>
+                           
+                           <div className="col-12">
+                               <div className="mobile_menu d-block d-lg-none"></div>
+                           </div>
+                       </div>
+                   </div>
+              </div>
+           </div>
+      </div>
+   </header>
+      
   )
 }
 

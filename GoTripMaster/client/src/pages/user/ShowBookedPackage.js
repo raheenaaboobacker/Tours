@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Footer from '../../Components/Footer';
 import UserNav from '../../Components/UserNav'
 import { useNavigate } from 'react-router-dom'
+import { Button } from 'react-bootstrap';
 
 function ShowBookedPackage() {
     const [item,setItem]=useState([]);
@@ -37,45 +38,55 @@ const handleClickOpen=(id)=>{
   return (
     <div>
         <UserNav/>
+        <div className="slider-area ">
+           
+           <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/h1_hero.jpg" + ")"}} >
+               <div className="container">
+                   <div className="row">
+                       <div className="col-xl-12">
+                           <div className="hero-cap text-center">
+                               <h2>Booked Packages</h2>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
         <div className="favourite-place place-padding">
                 <div className="container">
-                    
-                    <div className="row"style={{marginTop:-60}}>
-                        <div className="col-lg-12">
-                            <div class="section-tittle text-center">
-                                <h2>Booked Package</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
+                <div className="row">
+                      {item.length>0?<>
                         {item
                         
                         .map((u)=>(
                             <div className="col-xl-4 col-lg-4 col-md-6">
                             <div className="single-place mb-30">
                                 <div className="place-img">
-                                <img style={{minHeight:"320px"}}src={`./upload/${u?.bookedData[0]?.image}`} alt=""/>
+                                <img style={{minHeight:"345px"}}src={`./upload/${u?.bookedData[0]?.image}`} alt=""/>
                                 </div>
-                                <div className="place-cap">
+                                <div className="place-cap"  style={{maxHeight:"320px"}}>
                                     <div className="place-cap-top">
-                                    <h3>{u?.bookedData[0]?.pname}</h3>
+                                    <h3>{u?.bookedData[0]?.pname}<span style={{paddingLeft:25,marginTop:-12}}>{u.category_id===1?<><img style={{width:35,height:35}} src='https://i.pinimg.com/564x/12/8c/d6/128cd630c3fdc4c6d9dea5ca5c6624d7.jpg'/></>:null}</span></h3>
                                     <p className="dolor">{u.num} <span> Person</span></p>
                                     <p className="dolor">₹{u.num*u?.bookedData[0]?.price} </p>
                                     <h4>{u?.bookedData[0]?.description}</h4>
 
                                     </div>
                                     <div className="col-xl-5">
-                                      {u?.bookedData[0]?.category_id==1?<button type="button" className="btn btn-primary" data-target="#exampleModalCenter" data-toggle="modal"
-                                       onClick={()=>{ setPassenger(u)}} >View Passengers</button>:null}
-                                      <button type="button" className="btn btn-primary" style={{marginLeft:10}}  onClick={()=>{handleClickOpen(u._id)}}>
+                                      {u?.bookedData[0]?.category_id==1?<Button style={{padding:10,width:"110px"}} variant="warning" data-target="#exampleModalCenter" data-toggle="modal"
+                                       onClick={()=>{ setPassenger(u)}} >View Passengers</Button>:null}<br/><br/>
+                                      <Button style={{padding:10,width:"110px"}} variant="warning"  onClick={()=>{handleClickOpen(u._id)}}>
                                          Cancel
-                                      </button>   
+                                      </Button>   
                                       </div>
                                 </div>
                                
                             </div>
                         </div>
-                        ))}
+                        ))}</>:<div style={{width:"600px", margin:"auto"}}><div style={{textAlign:"center",fontSize:20}}  className="alert alert-warning" role="alert">
+                        Empty!
+                       </div></div>}
+                        
                     
                       
                     </div>
@@ -86,7 +97,7 @@ const handleClickOpen=(id)=>{
   <div className=" modal-dialog modal-dialog-centered" role="document">
     <div className="modal-content">
     <div className="modal-header">
-      <h5 className="modal-title" id="exampleModalLongTitle">Book Package</h5>
+      <h5 className="modal-title" id="exampleModalLongTitle">Booked Package</h5>
       <button type="button" className="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -96,7 +107,7 @@ const handleClickOpen=(id)=>{
     style={{  height: "43vh",
     overflowY: "auto"}}
     >
-   
+  
     <div className="place-cap">
      
               <div className="place-cap-top">{passenger==null?null:<>
@@ -106,13 +117,20 @@ const handleClickOpen=(id)=>{
              
 
                   {passenger?.PassengerDetails?.map((data,i)=>(
-                   <div className='passengerDetails' style={{backgroundColor: "#99a1a7",marginTop:20,padding:10}}>
-                    <p style={{color:'rgba(1,75,133,0.8)'}}>Passenger Name : {data.p_name}</p>
-                    <h5>Adhar No : {data.adhar_no}</h5>
-                    <h5>Passport Number : {data.passport_no}</h5>
-                    <h5>Expairy Date : {data.e_date}</h5>
-                   
-                    </div>
+                     <div class="row" style={{marginTop:10}}>
+                     <div class="col-sm-10">
+                       <div class="card">
+                         <div class="card-body">
+                         <h5 class="card-title">Passenger {i+1}</h5>
+                          <p class="card-text">
+                          Passenger Name : {data.p_name}<br/>Adhar No : {data.adhar_no}<br/>
+                          Passport Number : {data.passport_no}<br/>
+                          Expairy Date : {data.e_date}</p>
+                        </div>
+                       </div>
+                     </div>
+                     </div>
+                
                   ))}
                   </>}
                 
@@ -124,7 +142,7 @@ const handleClickOpen=(id)=>{
       
     </div>
     <div className="modal-footer">
-      <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+    <Button style={{padding:10,width:"110px"}} variant="warning" data-dismiss="modal">Close</Button>
       </div>
       </div>
   </div>

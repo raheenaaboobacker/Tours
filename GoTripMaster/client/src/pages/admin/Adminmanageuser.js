@@ -51,16 +51,13 @@ const  DeleteUser=(id)=>{
     axios.delete(url)
     .then((response)=> {
     console.log("DELETE COORDINATOR======",response);
-
-    if(response.data.success==true)
+  if(response.data.success==true)
     {
       setMessage(response.data.message)
 
         alert(response.data.message)
        
     }
-
-
    })
    .catch((error) => {
      console.log(error);
@@ -73,7 +70,7 @@ const  DeleteUser=(id)=>{
       <AdminNav/>
       <div className="slider-area ">
            
-           <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/contact_hero.jpg" + ")"}} >
+           <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/h1_hero.jpg" + ")"}} >
                <div className="container">
                    <div className="row">
                        <div className="col-xl-12">
@@ -87,38 +84,29 @@ const  DeleteUser=(id)=>{
        </div>
        <div className="favourite-place place-padding">
                 <div className="container">
-                    
-                 
+                
                     <div className="row">
                         {users
                         .map((item,i)=>(
                             <div className="col-xl-4 col-lg-4 col-md-6">
                             <div className="single-place mb-30">
-                       
-                                <div className="place-cap">
+                            <div style={{padding: "28px 40px", border:" 1px solid #f0f1f2"}}>
                                 <div className="card-title">
                                     <PersonIcon sx={{ fontSize: 40 }}/>
                                 </div>
-                                    <div className="place-cap-top">
-                                       
+                                    <div className="place-cap-top"> 
                                     <h4 className="card-title" key={i}>Name :{item.username} </h4>
                                     <h5 className="card-title" key={i}>Contact : {item.registerdetails[0].phone}</h5>
                                     <h5 className="card-text" key={i}>email : {item.registerdetails[0].email}</h5>
-                                   
                                     </div>
-                                    <div className="place-cap-bottom">
-                                        <ul>
-                                            <li> 
-                                            <a onClick={()=>DeleteUser(item._id)} class="btn" style={{backgroundColor:'#04495271',color:'white'}}>Delete</a> 
-                                            </li>
-                                            <li> 
+                                    <div className="place-cap-bottom" style={{padding:5}}>
+                                         
+                                            < Button style={{padding:10,width:"110px"}} variant="warning"onClick={()=>DeleteUser(item._id)} >Delete</Button> 
+                                           
                                             {item.status===0?
-                                              <> <a onClick={()=>ApproveUser(item._id)} class="btn" 
-                                              style={{backgroundColor:'#04495271',color:'white',marginLeft:10}}>
-                                                          Approve</a></>:
+                                              <> <Button style={{ marginLeft:10,padding:10,width:"110px"}} variant="warning" onClick={()=>ApproveUser(item._id)} >
+                                                          Approve</Button></>:
                                               null} 
-                                            </li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -128,8 +116,6 @@ const  DeleteUser=(id)=>{
                     </div>
                 </div>
             </div>
-            
-     
      <Footer/>
   </div>
   )

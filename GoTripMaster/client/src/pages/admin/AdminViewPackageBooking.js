@@ -35,7 +35,7 @@ function AdminViewPackageBooking() {
           <AdminNav/>
           <div className="slider-area ">
                
-               <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/contact_hero.jpg" + ")"}} >
+               <div className="single-slider slider-height2 d-flex align-items-center" style={{ backgroundImage: "url(" + "assets/img/hero/h1_hero.jpg" + ")"}} >
                    <div className="container">
                        <div className="row">
                            <div className="col-xl-12">
@@ -49,26 +49,17 @@ function AdminViewPackageBooking() {
            </div>
            <div className="favourite-place place-padding">
                     <div className="container">
-                        
-                        <div className="row">
-                            <div className="col-lg-12">
-                                <div className="section-tittle text-center">
-                                   
-                                    <h2>BOOKED PACKAGES</h2>
-                                </div>
-                            </div>
-                        </div>
                         <div className="row">
                             {item.map((u)=>(
                                 <div className="col-xl-4 col-lg-4 col-md-6">
                                 <div className="single-place mb-30">
                                     <div className="place-img">
-                                        <img style={{minHeight:"320px"}}src={`./upload/${u.packagedata[0].image}`} alt=""/>
+                                        <img style={{minHeight:"345px"}}src={`./upload/${u.packagedata[0].image}`} alt=""/>
                                     </div>
                                     <div className="place-cap">
                                         <div className="place-cap-top">
                                            
-                                            <h3><a href="#">{u.packagedata[0].pname}</a></h3>
+                                        <h3>{u.packagedata[0].pname}<span style={{paddingLeft:25}}>{u.category_id===1?<><img style={{width:35,height:35}} src='https://i.pinimg.com/564x/12/8c/d6/128cd630c3fdc4c6d9dea5ca5c6624d7.jpg'/></>:null}</span></h3>
                                             <p className="dolor">₹{u.packagedata[0].price} <span>/ Per Person</span></p>
                                             <h4>No of users : {u.num}</h4>
                                             <p>  user details </p>

@@ -81,6 +81,12 @@ function Userdashboard() {
       navigate(`/userbookiternational/${id}/${price}/${c_id}/${category_id}`)
      
 }
+const filteredOptions = item
+.filter((filterdata)=>{
+    if(filterdata.pname.toLowerCase().includes(searchitem.toLowerCase())){
+      return filterdata
+    }
+  });
   return (
     <div>
         <UserNav/>
@@ -130,35 +136,33 @@ function Userdashboard() {
                         </div>
                     </div>
                     <div className="row">
-                        {item
-                        .filter((filterdata)=>{
-                            if(filterdata.pname.toLowerCase().includes(searchitem.toLowerCase())){
-                              return filterdata
-                            }
-                          })
-                        .map((u)=>(
+                    {filteredOptions.length > 0 ? (
+                        filteredOptions.map((u,i)=>
+                        (
                             <div className="col-xl-4 col-lg-4 col-md-6">
                             <div className="single-place mb-30">
                                 <div className="place-img">
-                                    <img style={{minHeight:"320px"}}src={`./upload/${u.image}`} alt=""/>
+                                <img style={{minHeight:"345px"}}src={`./upload/${u.image}`} alt=""/>
                                 </div>
-                                <div className="place-cap">
+                                <div className="place-cap" style={{maxHeight:"210px"}}>
                                     <div className="place-cap-top">
                                        
-                                        <h3>{u.pname}</h3>
+                                        <h3>{u.pname}<span style={{paddingLeft:25,PaddingTop:-9}}>{u.category_id===1?<><img style={{width:35,height:35}} src='https://i.pinimg.com/564x/12/8c/d6/128cd630c3fdc4c6d9dea5ca5c6624d7.jpg'/></>:null}</span></h3>
                                         <p className="dolor">₹{u.price} <span>/ Per Person</span></p>
                                         {u.description}
                                     </div>
                                     <div className="col-xl-5">
                                        
-                                    <button type="button" className="btn btn-primary" data-toggle="modal"   onClick={()=>{console.log("add"+u._id);handleClickOpen(u._id)}} data-target="#exampleModalCenter">
+                                    <Button style={{padding:10,width:"110px"}} variant="warning"  data-toggle="modal"   onClick={()=>{console.log("add"+u._id);handleClickOpen(u._id)}} data-target="#exampleModalCenter">
                                        Book Now
-                                    </button>
+                                    </Button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        ))}
+                        ) )): <div style={{width:"600px", margin:"auto"}}><div style={{textAlign:"center",fontSize:20}}  className="alert alert-warning" role="alert">
+                        No Result Found!
+                       </div></div>}
                         
                        
                        
@@ -212,11 +216,11 @@ function Userdashboard() {
       
     </div>
     <div className="modal-footer">
-      <Button type="button" className="btn btn-secondary" data-dismiss="modal">Close</Button>
+    <Button style={{padding:10,width:"110px"}} variant="warning"  data-dismiss="modal">Close</Button>
       {temp.category_id==1?
-      <Button type="button" data-dismiss="modal" className="btn btn-secondary"
+      <Button style={{padding:10,width:"110px"}} variant="warning" data-dismiss="modal" 
       aria-label="Close" onClick={()=>{toProceed(temp._id,temp.price,temp.login_id,temp.category_id)}} > Proceed</Button>:
-      <Button type="button" data-dismiss="modal" className="btn btn-secondary" onClick={()=>{buttonClick(temp._id,temp.price,temp.login_id,num,temp.category_id)}} > Book Now</Button>}
+      <Button style={{padding:10,width:"110px"}} variant="warning"  data-dismiss="modal" onClick={()=>{buttonClick(temp._id,temp.price,temp.login_id,num,temp.category_id)}} > Book Now</Button>}
     </div>
   
       

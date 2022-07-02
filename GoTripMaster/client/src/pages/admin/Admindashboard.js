@@ -66,14 +66,14 @@ function Admindashboard() {
                             <div className="col-xl-4 col-lg-4 col-md-6">
                             <div className="single-place mb-30">
                                 <div className="place-img">
-                                    <img style={{minHeight:"320px"}}src={`./upload/${u.image}`} alt=""/>
+                                    <img style={{minHeight:"345px"}}src={`./upload/${u.image}`} alt=""/>
                                 </div>
                                 <div className="place-cap">
                                     <div className="place-cap-top">
                                        
-                                        <h3>{u.pname}</h3>
+                                    <h3>{u.pname}<span style={{paddingLeft:25}}>{u.category_id===1?<><img style={{width:35,height:35}} src='https://i.pinimg.com/564x/12/8c/d6/128cd630c3fdc4c6d9dea5ca5c6624d7.jpg'/></>:null}</span></h3>
                                         <p className="dolor">₹{u.price} <span>/ Per Person</span></p>
-                                        <h4>{u.description}</h4>
+                                        {u.description}
                                     </div>
                                    
                                 </div>
